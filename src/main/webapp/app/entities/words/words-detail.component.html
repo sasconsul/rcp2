@@ -1,0 +1,39 @@
+
+<div *ngIf="words">
+    <h2><span>Words</span> {{words.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Word</span></dt>
+        <dd>
+            <span>{{words.word}}</span>
+        </dd>
+        <dt><span>Count</span></dt>
+        <dd>
+            <span>{{words.count}}</span>
+        </dd>
+        <dt><span>Page</span></dt>
+        <dd>
+            <span>{{words.page}}</span>
+        </dd>
+        <dt><span>Pages</span></dt>
+        <dd>
+            <span *ngFor="let pages of words.pages; let last = last">
+                <a [routerLink]="['/pages', pages?.id ]">{{pages.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'words/'+ words.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

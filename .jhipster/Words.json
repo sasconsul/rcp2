@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "pages",
+            "otherEntityName": "pages",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "word",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "count",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "page",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20171121023455",
+    "entityTableName": "words",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

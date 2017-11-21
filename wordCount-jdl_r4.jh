@@ -1,0 +1,19 @@
+entity Pages {
+	url String,
+    id Long
+}
+
+entity Words {
+	word String,
+    count Long,
+    page Long
+}
+
+relationship ManyToMany {
+	Words{pages} to Pages
+}
+
+
+
+
+

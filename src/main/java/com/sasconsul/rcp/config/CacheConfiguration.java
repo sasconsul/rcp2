@@ -41,6 +41,9 @@ public class CacheConfiguration {
             cm.createCache(com.sasconsul.rcp.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.sasconsul.rcp.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.sasconsul.rcp.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.sasconsul.rcp.domain.Pages.class.getName(), jcacheConfiguration);
+            cm.createCache(com.sasconsul.rcp.domain.Words.class.getName(), jcacheConfiguration);
+            cm.createCache(com.sasconsul.rcp.domain.Words.class.getName() + ".pages", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

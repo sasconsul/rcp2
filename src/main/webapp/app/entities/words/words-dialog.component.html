@@ -1,0 +1,46 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myWordsLabel">Create or edit a Words</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!words.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="words.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_word">Word</label>
+            <input type="text" class="form-control" name="word" id="field_word"
+                [(ngModel)]="words.word"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_count">Count</label>
+            <input type="number" class="form-control" name="count" id="field_count"
+                [(ngModel)]="words.count"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_page">Page</label>
+            <input type="number" class="form-control" name="page" id="field_page"
+                [(ngModel)]="words.page"  />
+        </div>
+
+        <div class="form-group">
+            <label for="field_pages">Pages</label>
+            <select class="form-control" id="field_pages" multiple name="pages" [(ngModel)]="words.pages">
+                <option [ngValue]="getSelected(words.pages, pagesOption)" *ngFor="let pagesOption of pages; trackBy: trackPagesById">{{pagesOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

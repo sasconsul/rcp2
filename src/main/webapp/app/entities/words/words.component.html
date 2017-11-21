@@ -1,0 +1,66 @@
+<div>
+    <h2>
+        <span>Words</span>
+        <button class="btn btn-primary float-right jh-create-entity create-words" [routerLink]="['/', { outlets: { popup: ['words-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Words
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="words">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Word</span></th>
+            <th><span>Count</span></th>
+            <th><span>Page</span></th>
+            <th><span>Pages</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let words of words ;trackBy: trackId">
+                <td><a [routerLink]="['../words', words.id ]">{{words.id}}</a></td>
+                <td>{{words.word}}</td>
+                <td>{{words.count}}</td>
+                <td>{{words.page}}</td>
+                <td>
+                    <span *ngFor="let pages of words.pages; let last = last">
+                            <a class="form-control-static" [routerLink]="['../pages', pages?.id ]">{{pages.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../words', words.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'words/'+ words.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'words/'+ words.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
