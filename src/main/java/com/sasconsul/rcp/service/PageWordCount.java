@@ -20,9 +20,8 @@ public class PageWordCount {
 
     private static HashMap<String, Long> wordCount = new HashMap<>();
 
-    public static void main(String[] args) throws IOException {
-        Validate.isTrue(args.length == 1, "usage: supply url to fetch");
-        String url = args[0];
+    public static void count(String url) throws IOException {
+        Validate.isTrue(url.length() >= 1, "usage: supply url to fetch");
         print("Fetching %s...", url);
 
         Document doc = Jsoup.connect(url).get();
